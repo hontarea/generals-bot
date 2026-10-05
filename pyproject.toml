@@ -1,0 +1,28 @@
+[project]
+name = "generals-rl-agent"
+version = "1.0.0"
+description = "A PPO self-play agent for the Generals Bot Competition (generals.bot, 2026)"
+authors = [{name = "Artem Hontarenko"}]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    # The game engine, unmodified, at the commit the competition ran.
+    "generals-bots @ git+https://github.com/strakam/generals-bots@9e3b9d13cca51caa1bb07db48bb85c9e90ce0462",
+    "numpy>=2.0",
+    "jax>=0.4.30",
+    "equinox>=0.11",
+    "optax>=0.2",
+    "safetensors>=0.4",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8.0"]
+plots = ["matplotlib>=3.8", "pillow>=10.0"]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["agent*", "evaluation*"]
